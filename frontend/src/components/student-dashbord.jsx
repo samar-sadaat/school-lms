@@ -28,6 +28,7 @@ const validate = values => {
 
 function StudentDashboard() {
 const API_URL = import.meta.env.VITE_API_URL;
+console.log("API_URL------> (1)", API_URL);
 
     const navigate = useNavigate();
     const [dataShow, setdataShow] = useState([]);

@@ -27,5 +27,5 @@ build
 *.sln
 *.sw?
 
-
+# environment variables
 .env
