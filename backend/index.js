@@ -13,7 +13,11 @@ exp.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-  }));
+}));
+
+exp.get("/", (req, res) => {
+  res.send("Backend is live and CORS configured properly!");
+});
 exp.use(express.json());
 exp.use('/teacher', TeacherRoute);
 exp.use('/student', StudentRoute);
@@ -22,6 +26,6 @@ exp.use('/course', CourseRoutes);
 
 const PORT = process.env.PORT || 4000;
 
-exp.listen(PORT, ()=>{
+exp.listen(PORT, () => {
     console.log(`Server is Runing ${PORT}`)
 })
