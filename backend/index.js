@@ -8,6 +8,8 @@ require('dotenv').config();
 const mongodb = require('./db')
 mongodb();
 
+exp.use(express.json());
+
 exp.use(cors({
     origin: ["https://crud-for-teacher-student.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -18,7 +20,7 @@ exp.use(cors({
 exp.get("/", (req, res) => {
   res.send("Backend is live and CORS configured properly!");
 });
-exp.use(express.json());
+
 exp.use('/teacher', TeacherRoute);
 exp.use('/student', StudentRoute);
 exp.use('/course', CourseRoutes);
