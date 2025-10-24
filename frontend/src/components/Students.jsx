@@ -121,7 +121,7 @@ function Student() {
             try {
                 if (isEditMode) {
                     const token = localStorage.getItem('id');
-                    const res = await axios.patch(`http://localhost:4000/student/update`, objUser,
+                    const res = await axios.patch(`https://teacher-student-lms.onrender.com/student/update`, objUser,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -136,7 +136,7 @@ function Student() {
                 } else {
                     try {
                         const token = localStorage.getItem('id');
-                        const res = await axios.post("http://localhost:4000/student/signup", objUser,
+                        const res = await axios.post("https://teacher-student-lms.onrender.com/student/signup", objUser,
                             {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
@@ -166,7 +166,7 @@ function Student() {
         try {
             const token = localStorage.getItem('id');
             checkId()
-            const res = await axios.get(`http://localhost:4000/student/${pageNmbr}`, {
+            const res = await axios.get(`https://teacher-student-lms.onrender.com/student/${pageNmbr}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -190,7 +190,7 @@ function Student() {
         } else {
             try {
                 const token = localStorage.getItem('id')
-                const res = await axios.delete(`http://localhost:4000/student/del/${Email}`,
+                const res = await axios.delete(`https://teacher-student-lms.onrender.com/student/del/${Email}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

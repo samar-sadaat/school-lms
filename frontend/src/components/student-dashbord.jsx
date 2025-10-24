@@ -117,7 +117,7 @@ function StudentDashboard() {
             try {
                 if (isEditMode) {
                     const token = localStorage.getItem('id');
-                    const res = await axios.patch(`http://localhost:4000/course/update`, objCourse,
+                    const res = await axios.patch(`https://teacher-student-lms.onrender.com/course/update`, objCourse,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -132,7 +132,7 @@ function StudentDashboard() {
                 } else {
                     try {
                         const token = localStorage.getItem('id');
-                        const res = await axios.post("http://localhost:4000/course/create", objCourse,
+                        const res = await axios.post("https://teacher-student-lms.onrender.com/course/create", objCourse,
                             {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
@@ -173,7 +173,7 @@ function StudentDashboard() {
         try {
             const token = localStorage.getItem('id');
             checkId()
-            const res = await axios.get(`http://localhost:4000/course`, {
+            const res = await axios.get(`https://teacher-student-lms.onrender.com/course`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -196,7 +196,7 @@ function StudentDashboard() {
         } else {
             try {
                 const token = localStorage.getItem('id')
-                const res = await axios.delete(`http://localhost:4000/course/del/${Course}`,
+                const res = await axios.delete(`https://teacher-student-lms.onrender.com/course/del/${Course}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

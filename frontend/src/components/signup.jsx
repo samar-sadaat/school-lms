@@ -146,14 +146,14 @@ function InputData() {
 
             try {
                 if (isEditMode) {
-                    const res = await axios.patch(`http://localhost:4000/user/update/`, objUser);
+                    const res = await axios.patch(`https://teacher-student-lms.onrender.com/user/update/`, objUser);
                     console.log("Updated:", res.data);
                     toast.success("User updated successfully!");
                     setIsEditMode(false);
                     formik.resetForm();
                 } else {
                     try {
-                        const res = await axios.post("http://localhost:4000/teacher/signup", objUser);
+                        const res = await axios.post("https://teacher-student-lms.onrender.com/teacher/signup", objUser);
                         toast.success("Signup successful!");
                         console.log("Created:", res.data);
                         // console.log(objUser)

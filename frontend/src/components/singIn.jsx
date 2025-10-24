@@ -212,12 +212,12 @@ function SignIn() {
 
             try {
                 if (values.login === "loginTeacher") {
-                    const res = await axios.post("http://localhost:4000/teacher/login", objUser);
+                    const res = await axios.post("https://teacher-student-lms.onrender.com/teacher/login", objUser);
                     toast.success(res.data?.message);
                     localStorage.setItem("id", res.data.token);
                     navigate("/students");
                 } else if (values.login === "loginStudent") {
-                    const res = await axios.post("http://localhost:4000/student/login", objUser);
+                    const res = await axios.post("https://teacher-student-lms.onrender.com/student/login", objUser);
                     toast.success(res.data?.message);
                     localStorage.setItem("id", res.data.token);
                     navigate("/studentsDashbord");
