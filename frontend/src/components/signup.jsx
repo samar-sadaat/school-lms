@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 
 const validate = values => {
     const errors = {};
@@ -48,6 +48,7 @@ const validate = values => {
 
 
 function InputData() {
+    const API_URL = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
     // const [dataShow, setdataShow] = useState([]);
     const [isEditMode, setIsEditMode] = useState(false);

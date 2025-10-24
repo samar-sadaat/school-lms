@@ -11,7 +11,7 @@ mongodb();
 exp.use(express.json());
 
 exp.use(cors({
-    origin: ["https://crud-for-teacher-student.vercel.app"],
+    origin: ["https://school-lms-five.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,

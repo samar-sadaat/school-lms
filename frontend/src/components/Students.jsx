@@ -4,30 +4,29 @@ import { useFormik } from 'formik';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Pagenation from './pagination';
-const API_URL = import.meta.env.VITE_API_URL;
 
 const validate = values => {
     const errors = {};
-
+    
     // Name
     if (!values.name?.trim()) {
         errors.name = "Name is required";
     } else if (values.name.length < 3) {
         errors.name = "Name must be at least 3 characters";
     }
-
+    
     // Email
     if (!values.email?.trim()) {
         errors.email = "Email is required";
     } else if (!/^[A-Z0-9._%+-]+@[A-Z]+\.[A-Z]{2,}$/i.test(values.email)) {
         errors.email = "Invalid email address";
     }
-
+    
     // Course
     if (!values.course?.trim()) {
         errors.course = "Course is required";
     }
-
+    
     // Date of Birth
     if (!values.dob) {
         errors.dob = "Date of Birth is required";
@@ -35,7 +34,8 @@ const validate = values => {
     return errors;
 };
 function Student() {
-
+    const API_URL = import.meta.env.VITE_API_URL;
+    
 
     const navigate = useNavigate();
     const [dataShow, setdataShow] = useState([]);
@@ -45,7 +45,7 @@ function Student() {
     const [totalStudents, settotalStudents] = useState([])
     
     const totalPages = Math.ceil(totalStudents / 4);
-
+    
     function checkId() {
         const Id = localStorage.getItem('id');
         if (!Id) {
@@ -53,22 +53,22 @@ function Student() {
             navigate('/signin')
         }
     }
-
-
+    
+    
     const nameKey = (e) => {
         if (!/^[A-Za-z ]+$/.test(e.key)) {
             e.preventDefault();
         }
-
+        
         if (e.key === " " && e.target.selectionStart === 0) {
             e.preventDefault();
         }
-
+        
         if (e.key === " " && e.target.value[e.target.selectionStart - 1] === " ") {
             e.preventDefault();
         }
     };
-
+    
     const emailKey = (e) => {
         if (e.key === ' ') {
             e.preventDefault();
@@ -83,15 +83,15 @@ function Student() {
         if (e.key === " " && e.target.selectionStart === 0) {
             e.preventDefault();
         }
-
+        
         if (e.key === " " && e.target.value[e.target.selectionStart - 1] === " ") {
             e.preventDefault();
         }
     };
-
-
+    
+    
     async function handleEdit(user) {
-
+        
         setIsUser(user);
         formik.values = user;
         setIsEditMode(true);
@@ -121,6 +121,7 @@ function Student() {
             try {
                 if (isEditMode) {
                     const token = localStorage.getItem('id');
+                    // const API_URL = import.meta.env.VITE_API_URL;
                     const res = await axios.patch(`${API_URL}/student/update`, objUser,
                         {
                             headers: {

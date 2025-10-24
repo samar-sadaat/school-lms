@@ -5,7 +5,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Pagenation from './pagination';
 
-const API_URL = import.meta.env.VITE_API_URL;
 const validate = values => {
     const errors = {};
 
@@ -28,7 +27,7 @@ const validate = values => {
 
 
 function StudentDashboard() {
-
+const API_URL = import.meta.env.VITE_API_URL;
 
     const navigate = useNavigate();
     const [dataShow, setdataShow] = useState([]);
