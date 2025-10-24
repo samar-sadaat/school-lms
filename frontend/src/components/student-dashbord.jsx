@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Pagenation from './pagination';
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 const validate = values => {
     const errors = {};
 
@@ -117,7 +117,7 @@ function StudentDashboard() {
             try {
                 if (isEditMode) {
                     const token = localStorage.getItem('id');
-                    const res = await axios.patch(`https://teacher-student-lms.onrender.com/course/update`, objCourse,
+                    const res = await axios.patch(`${API_URL}/course/update`, objCourse,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -132,7 +132,7 @@ function StudentDashboard() {
                 } else {
                     try {
                         const token = localStorage.getItem('id');
-                        const res = await axios.post("https://teacher-student-lms.onrender.com/course/create", objCourse,
+                        const res = await axios.post(`${API_URL}/course/create`, objCourse,
                             {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
@@ -173,7 +173,7 @@ function StudentDashboard() {
         try {
             const token = localStorage.getItem('id');
             checkId()
-            const res = await axios.get(`https://teacher-student-lms.onrender.com/course`, {
+            const res = await axios.get(`${API_URL}/course`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -196,7 +196,7 @@ function StudentDashboard() {
         } else {
             try {
                 const token = localStorage.getItem('id')
-                const res = await axios.delete(`https://teacher-student-lms.onrender.com/course/del/${Course}`,
+                const res = await axios.delete(`${API_URL}/course/del/${Course}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

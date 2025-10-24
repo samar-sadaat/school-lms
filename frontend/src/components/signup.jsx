@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const validate = values => {
     const errors = {};
@@ -146,14 +147,14 @@ function InputData() {
 
             try {
                 if (isEditMode) {
-                    const res = await axios.patch(`https://teacher-student-lms.onrender.com/user/update/`, objUser);
+                    const res = await axios.patch(`${API_URL}/user/update/`, objUser);
                     console.log("Updated:", res.data);
                     toast.success("User updated successfully!");
                     setIsEditMode(false);
                     formik.resetForm();
                 } else {
                     try {
-                        const res = await axios.post("https://teacher-student-lms.onrender.com/teacher/signup", objUser);
+                        const res = await axios.post(`${API_URL}/teacher/signup`, objUser);
                         toast.success("Signup successful!");
                         console.log("Created:", res.data);
                         // console.log(objUser)

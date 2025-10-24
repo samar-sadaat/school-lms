@@ -154,6 +154,7 @@ import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+const API_URL = import.meta.env.VITE_API_URL;
 // import { eyeOff } from "react-icons-kit/feather/eyeOff";
 // import { eye } from "react-icons-kit/feather/eye";
 
@@ -212,12 +213,12 @@ function SignIn() {
 
             try {
                 if (values.login === "loginTeacher") {
-                    const res = await axios.post("https://teacher-student-lms.onrender.com/teacher/login", objUser);
+                    const res = await axios.post(`${API_URL}/teacher/login`, objUser);
                     toast.success(res.data?.message);
                     localStorage.setItem("id", res.data.token);
                     navigate("/students");
                 } else if (values.login === "loginStudent") {
-                    const res = await axios.post("https://teacher-student-lms.onrender.com/student/login", objUser);
+                    const res = await axios.post(`${API_URL}/student/login`, objUser);
                     toast.success(res.data?.message);
                     localStorage.setItem("id", res.data.token);
                     navigate("/studentsDashbord");
