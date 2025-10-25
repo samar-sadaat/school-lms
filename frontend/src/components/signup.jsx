@@ -48,7 +48,7 @@ const validate = values => {
 
 
 function InputData() {
-    const API_URL = import.meta.env.VITE_API_URL;
+    const API_URL = import.meta.env.API_URL;
     const navigate = useNavigate();
     // const [dataShow, setdataShow] = useState([]);
     const [isEditMode, setIsEditMode] = useState(false);
@@ -155,7 +155,7 @@ function InputData() {
                     formik.resetForm();
                 } else {
                     try {
-                        const res = await axios.post(`${API_URL}/teacher/signup`, objUser);
+                        const res = await axios.post(`https://teacher-student-lms.onrender.com/teacher/signup`, objUser);
                         toast.success("Signup successful!");
                         console.log("Created:", res.data);
                         // console.log(objUser)
